@@ -1,0 +1,1 @@
+ALTER TABLE clients ADD FOREIGN KEY (city) REFERENCES cities(id);
