@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import ClientList from "@/components/ClientTable";
+import ClientList from "@/components/ClientList";
 
 export default function Home() {
   return (

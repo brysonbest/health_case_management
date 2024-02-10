@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
+import { PrimeReactProvider } from "primereact/api";
 import theme from "./theme";
 import "./globals.css";
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <PrimeReactProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </PrimeReactProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
