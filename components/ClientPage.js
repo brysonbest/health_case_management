@@ -9,16 +9,20 @@ import Box from "@mui/material/Box";
 
 const columns = [
   { field: "clientid", headerName: "ID" },
-  { field: "first_name", headerName: "First name" },
-  { field: "last_name", headerName: "Last name" },
-  { field: "gender", headerName: "Gender" },
-  { field: "birthday", headerName: "Date of Birth" },
-  { field: "city", headerName: "City" },
-  { field: "indigenous", headerName: "Indigenous" },
-  { field: "pwd", headerName: "PWD" },
-  { field: "vet", headerName: "Veteran" },
-  { field: "emergency_shelter", headerName: "Emergency Shelter" },
-  { field: "bus_pass", headerName: "Bus Pass" },
+  { field: "first_name", headerName: "First name", editable: true },
+  { field: "last_name", headerName: "Last name", editable: true },
+  { field: "gender", headerName: "Gender", editable: true },
+  { field: "birthday", headerName: "Date of Birth", editable: true },
+  { field: "city", headerName: "City", editable: true },
+  { field: "indigenous", headerName: "Indigenous", editable: true },
+  { field: "pwd", headerName: "PWD", editable: true },
+  { field: "vet", headerName: "Veteran", editable: true },
+  {
+    field: "emergency_shelter",
+    headerName: "Emergency Shelter",
+    editable: true,
+  },
+  { field: "bus_pass", headerName: "Bus Pass", editable: true },
   {
     field: "clothing_supplement",
     headerName: "Clothing Supplement",
@@ -98,6 +102,7 @@ export default function ClientPage({ clientIDNumber }) {
                 toolbar: GridToolbar,
               }}
               pageSizeOptions={[5, 10]}
+              editMode="cell"
             />
           </Box>
         </div>

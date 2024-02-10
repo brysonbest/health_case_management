@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -47,6 +47,12 @@ export default function ClientList() {
     router.push(`/${clientID}`, event);
   };
 
+  // const columns = useMemo(
+  //   () =>
+  //     data.columns.filter((column) => VISIBLE_FIELDS.includes(column.field)),
+  //   [data.columns]
+  // );
+
   const fetchclientList = async () => {
     // Clear clientlist
     setClientList([]);
@@ -91,6 +97,11 @@ export default function ClientList() {
               onRowClick={(event) => handleRowClick(event)}
               slots={{
                 toolbar: GridToolbar,
+              }}
+              slotProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                },
               }}
               pageSizeOptions={[5, 10]}
             />
