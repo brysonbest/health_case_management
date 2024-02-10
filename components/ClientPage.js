@@ -14,26 +14,26 @@ const columns = [
   { field: "gender", headerName: "Gender" },
   { field: "birthday", headerName: "Date of Birth" },
   { field: "city", headerName: "City" },
-  // { field: "indigenous", headerName: "Indigenous" },
-  // { field: "pwd", headerName: "PWD" },
-  // { field: "vet", headerName: "Veteran" },
-  // { field: "emergency_shelter", headerName: "Emergency Shelter" },
-  // { field: "bus_pass", headerName: "Bus Pass" },
-  // {
-  //   field: "clothing_supplement",
-  //   headerName: "Clothing Supplement",
-  // },
-  // { field: "pet_deposit", headerName: "Pet Deposit" },
-  // { field: "pssg", headerName: "PSSG" },
-  // { field: "admission_status", headerName: "Admission Status" },
-  // { field: "deceased", headerName: "Deceased" },
+  { field: "indigenous", headerName: "Indigenous" },
+  { field: "pwd", headerName: "PWD" },
+  { field: "vet", headerName: "Veteran" },
+  { field: "emergency_shelter", headerName: "Emergency Shelter" },
+  { field: "bus_pass", headerName: "Bus Pass" },
+  {
+    field: "clothing_supplement",
+    headerName: "Clothing Supplement",
+  },
+  { field: "pet_deposit", headerName: "Pet Deposit" },
+  { field: "pssg", headerName: "PSSG" },
+  { field: "admission_status", headerName: "Admission Status" },
+  { field: "deceased", headerName: "Deceased" },
   { field: "urgent", headerName: "Urgent" },
   { field: "phone_number", headerName: "Phone Number" },
-  // { field: "activated_account", headerName: "Activated Account" },
-  // { field: "created_at", headerName: "Created At" },
+  { field: "activated_account", headerName: "Activated Account" },
+  { field: "created_at", headerName: "Created At" },
 ];
 
-export default function ClientList() {
+export default function ClientPage({ clientIDNumber }) {
   const router = useRouter();
   const [clientList, setClientList] = useState([]);
 
@@ -44,7 +44,7 @@ export default function ClientList() {
   const handleRowClick = (event) => {
     const clientID = event.id;
     console.log(clientID);
-    router.push(`/${clientID}`, event);
+    // router.push(`/${clientID}`, event);
   };
 
   const fetchclientList = async () => {
@@ -52,7 +52,12 @@ export default function ClientList() {
     setClientList([]);
 
     try {
-      let { data, error } = await supabase.from("clients").select("*");
+      let { data, error } = await supabase
+        .from("clients")
+        .select("*")
+        .eq("id", clientIDNumber);
+
+      console.log(data, "this is what was found");
 
       // Handle any errors.
       if (error) {
